@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Natalia Sepúlveda – Data Analyst Portfolio</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#38bdf8;--border:#334155}
+@media (prefers-color-scheme:light){:root{--bg:#f8fafc;--card:#fff;--text:#0f172a;--muted:#475569;--accent:#0369a1;--border:#e2e8f0}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.wrap{max-width:1050px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:56px 0 24px}
+header img{width:130px;height:130px;border-radius:50%;border:3px solid var(--accent)}
+h1{margin:16px 0 4px;font-size:2rem}
+.role{color:var(--accent);font-weight:600;margin:0}
+.bio{color:var(--muted);max-width:680px;margin:14px auto}
+.links a{color:var(--accent);margin:0 10px;text-decoration:none;font-weight:600}
+.skills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 0}
+.chip{border:1px solid var(--border);border-radius:999px;padding:3px 12px;font-size:.82rem;color:var(--muted)}
+h2{text-align:center;margin:40px 0 16px}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.filters button{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:999px;padding:8px 18px;cursor:pointer;font-size:.9rem}
+.filters button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column}
+.card h3{margin:0 0 4px;font-size:1.1rem}
+.tag{font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.card p{margin:6px 0;font-size:.9rem;color:var(--muted)}
+.card p b{color:var(--text)}
+.card .chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.card a{margin-top:auto;color:var(--accent);font-weight:600;text-decoration:none}
+footer{text-align:center;color:var(--muted);padding:40px 0;font-size:.9rem}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="https://avatars.githubusercontent.com/u/293954552?v=4" alt="Natalia Sepúlveda">
+  <h1>Natalia Sepúlveda</h1>
+  <p class="role">Data Analyst | Business Intelligence</p>
+  <p class="bio" style="margin:6px 0 0">📍 Colombia</p>
+  <p class="bio">Data Analyst with a Business Administration background and a Specialization in Visual Analytics and Big Data. I turn transactional data into reliable, automated reports: ETL workflows in SQL, Python and Power Query, Power BI dashboards, and analyses of sales, profitability, funnels and retention, including A/B testing.</p>
+  <div class="links">
+    <a href="https://www.linkedin.com/in/natalia-sepulveda-escobar">LinkedIn</a>
+    <a href="https://github.com/nataliasepulveda-28">GitHub</a>
+    <a href="mailto:Nata.sepulveda28@gmail.com">Email</a>
+  </div>
+  <div class="skills" id="skills"></div>
+</header>
+
+<h2>Project Portfolio</h2>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+
+<footer>© 2026 Natalia Sepúlveda</footer>
+</div>
+
+<script>
+// EDIT HERE: add or change projects. category must be one of the filter names below.
+const projects = [
+  {title:"Urban Mobility", cat:"Data Analysis",
+   problem:"Which Latin American cities should prioritize transport infrastructure investment?",
+   did:"Cleaned and merged TomTom Traffic Index and OECD Cities (2024) data with Python and Pandas, then analyzed congestion vs. GDP per capita with boxplots, histograms and bar charts.",
+   result:"Congestion is inversely related to economic development; Bogotá and Lima emerged as investment priorities.",
+   skills:["Python","Pandas","NumPy","Matplotlib","Seaborn"], link:"#"},
+  {title:"Flight Delay Prediction", cat:"Big Data",
+   problem:"Predict whether a flight will arrive late and monitor average delay per airport in real time.",
+   did:"Cleaned a 162,000-flight dataset with PySpark, trained a Decision Tree classifier, and streamed updates with Apache Kafka and Spark Structured Streaming.",
+   result:"End-to-end workflow from batch cleaning to streaming ingestion, reusing the same business logic on HDFS + Kafka + Spark.",
+   skills:["PySpark","Kafka","Spark MLlib","HDFS","JupyterLab"], link:"#"},
+  {title:"ConnectaTel Customer Analysis", cat:"Data Analysis",
+   problem:"Understand customer behavior at a Latin American telecom to support retention strategies and plan improvements.",
+   did:"Fixed data-quality issues (sentinel values, inconsistent dates), computed per-user usage metrics, detected outliers with IQR, and segmented customers by age and usage.",
+   result:"Executive insights translating usage patterns into retention and plan recommendations.",
+   skills:["Python","Pandas","Seaborn","Matplotlib"], link:"https://github.com/nataliasepulveda-28/analysis-connectatel"},
+  {title:"NovaRetail A/B Testing & EDA", cat:"Data Analysis",
+   problem:"Evaluate experiment results and customer churn drivers for an e-commerce case.",
+   did:"Ran Welch's t-test, z-test for proportions and chi-squared tests; explored churn with Pearson, Spearman, Cramér's V and point-biserial correlations.",
+   result:"Business-oriented conclusions backed by statistical evidence.",
+   skills:["Python","SciPy","Seaborn","A/B Testing"], link:"#"},
+  {title:"RappiPlus Final Project", cat:"Data Analysis",
+   problem:"Assess RappiPlus performance to support business decisions.",
+   did:"Data quality checks and profitability KPIs in Python, conversion funnel and cohort retention in SQL, checkout A/B test, and a BI dashboard.",
+   result:"Full analytics cycle from raw data to dashboard (TripleTen capstone).",
+   skills:["Python","SQL","PostgreSQL","Power BI"], link:"#"},
+  {title:"Andes Retail Group Dashboard", cat:"Dashboards",
+   problem:"Give a multi-country retailer (Peru, Chile, Colombia) a clear view of revenue and profit, 2024–2025.",
+   did:"Built a two-view Power BI dashboard: KPI overview (revenue, profit, units, average ticket) and a drill-down view explaining the why by country, category and segment, with DAX measures.",
+   result:"Interactive storytelling dashboard, from overview to detail.",
+   skills:["Power BI","DAX","Power Query"], link:"#"},
+  {title:"BI Architecture & Inventory Control (Farmapet AXM)", cat:"Dashboards",
+   problem:"Unify sales and inventory history (1,000+ SKUs) of a business I co-founded to get reliable, fast reporting.",
+   did:"Designed a relational data model from scratch, ran ETL in Power Query, built executive Power BI dashboards, automated the weekly report, and designed an AI-assisted workflow to classify and summarize the product catalog.",
+   result:"Report time cut from 3 hours to under 30 minutes, about 6 operational hours saved per week, and stockouts reduced by 25%.",
+   skills:["Power BI","DAX","Power Query","Data Modeling","Generative AI"], link:"#"},
+  {title:"Schools Profile Report Migration", cat:"Dashboards",
+   problem:"A yearly school-profile report (2021–2026, SNIES data) was built by hand in Excel pivot tables.",
+   did:"Cleaning the source data and rebuilding the report in Power BI with automated year-over-year comparisons and trend indicators.",
+   result:"A reusable, automated report for future analysis.",
+   skills:["Power BI","Power Query","Excel"], link:"#"}
+];
+const cats = ["All","Data Analysis","Dashboards","Big Data"];
+const skills = ["Python","SQL","Power BI","DAX","Power Query","ETL","A/B Testing","KPIs"];
+
+document.getElementById("skills").innerHTML = skills.map(s=>`<span class="chip">${s}</span>`).join("");
+const grid = document.getElementById("grid"), bar = document.getElementById("filters");
+grid.innerHTML = projects.map(p=>`
+  <article class="card" data-cat="${p.cat}">
+    <div class="tag">${p.cat}</div><h3>${p.title}</h3>
+    <p><b>Problem:</b> ${p.problem}</p><p><b>What I did:</b> ${p.did}</p><p><b>Result:</b> ${p.result}</p>
+    <div class="chips">${p.skills.map(s=>`<span class="chip">${s}</span>`).join("")}</div>
+    <a href="${p.link}">View project →</a>
+  </article>`).join("");
+bar.innerHTML = cats.map((c,i)=>`<button class="${i?"":"on"}" data-c="${c}">${c}</button>`).join("");
+bar.addEventListener("click",e=>{
+  const c = e.target.dataset.c; if(!c) return;
+  bar.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===e.target));
+  grid.querySelectorAll(".card").forEach(k=>k.classList.toggle("hidden",c!=="All"&&k.dataset.cat!==c));
+});
+</script>
+</body>
+</html>
