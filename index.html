@@ -15,6 +15,7 @@ header img{width:130px;height:130px;border-radius:50%;border:3px solid var(--acc
 h1{margin:16px 0 4px;font-size:2rem}
 .role{color:var(--accent);font-weight:600;margin:0}
 .bio{color:var(--muted);max-width:680px;margin:14px auto}
+.loc{color:var(--muted);margin:6px 0 0;text-align:center}
 .links a{color:var(--accent);margin:0 10px;text-decoration:none;font-weight:600}
 .skills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 0}
 .chip{border:1px solid var(--border);border-radius:999px;padding:3px 12px;font-size:.82rem;color:var(--muted)}
@@ -40,7 +41,7 @@ footer{text-align:center;color:var(--muted);padding:40px 0;font-size:.9rem}
   <img src="https://avatars.githubusercontent.com/u/293954552?v=4" alt="Natalia Sepúlveda">
   <h1>Natalia Sepúlveda</h1>
   <p class="role">Data Analyst | Business Intelligence</p>
-  <p class="bio" style="margin:6px 0 0">📍 Colombia</p>
+  <p class="loc">📍 Colombia</p>
   <p class="bio">Data Analyst with a Business Administration background and a Specialization in Visual Analytics and Big Data. I turn transactional data into reliable, automated reports: ETL workflows in SQL, Python and Power Query, Power BI dashboards, and analyses of sales, profitability, funnels and retention, including A/B testing.</p>
   <div class="links">
     <a href="https://www.linkedin.com/in/natalia-sepulveda-escobar">LinkedIn</a>
@@ -64,44 +65,21 @@ const projects = [
    problem:"Which Latin American cities should prioritize transport infrastructure investment?",
    did:"Cleaned and merged TomTom Traffic Index and OECD Cities (2024) data with Python and Pandas, then analyzed congestion vs. GDP per capita with boxplots, histograms and bar charts.",
    result:"Congestion is inversely related to economic development; Bogotá and Lima emerged as investment priorities.",
-   skills:["Python","Pandas","NumPy","Matplotlib","Seaborn"], link:"#"},
+   skills:["Python","Pandas","NumPy","Matplotlib","Seaborn"], link:"https://github.com/nataliasepulveda-28/nataliasepulveda-28/tree/main/Urban_mobility"},
   {title:"Flight Delay Prediction", cat:"Big Data",
    problem:"Predict whether a flight will arrive late and monitor average delay per airport in real time.",
    did:"Cleaned a 162,000-flight dataset with PySpark, trained a Decision Tree classifier, and streamed updates with Apache Kafka and Spark Structured Streaming.",
    result:"End-to-end workflow from batch cleaning to streaming ingestion, reusing the same business logic on HDFS + Kafka + Spark.",
-   skills:["PySpark","Kafka","Spark MLlib","HDFS","JupyterLab"], link:"#"},
+   skills:["PySpark","Kafka","Spark MLlib","HDFS","JupyterLab"], link:"https://github.com/nataliasepulveda-28/nataliasepulveda-28/tree/main/Flight_delay_prediction"},
   {title:"ConnectaTel Customer Analysis", cat:"Data Analysis",
    problem:"Understand customer behavior at a Latin American telecom to support retention strategies and plan improvements.",
    did:"Fixed data-quality issues (sentinel values, inconsistent dates), computed per-user usage metrics, detected outliers with IQR, and segmented customers by age and usage.",
    result:"Executive insights translating usage patterns into retention and plan recommendations.",
-   skills:["Python","Pandas","Seaborn","Matplotlib"], link:"https://github.com/nataliasepulveda-28/analysis-connectatel"},
-  {title:"NovaRetail A/B Testing & EDA", cat:"Data Analysis",
-   problem:"Evaluate experiment results and customer churn drivers for an e-commerce case.",
-   did:"Ran Welch's t-test, z-test for proportions and chi-squared tests; explored churn with Pearson, Spearman, Cramér's V and point-biserial correlations.",
-   result:"Business-oriented conclusions backed by statistical evidence.",
-   skills:["Python","SciPy","Seaborn","A/B Testing"], link:"#"},
-  {title:"RappiPlus Final Project", cat:"Data Analysis",
-   problem:"Assess RappiPlus performance to support business decisions.",
-   did:"Data quality checks and profitability KPIs in Python, conversion funnel and cohort retention in SQL, checkout A/B test, and a BI dashboard.",
-   result:"Full analytics cycle from raw data to dashboard (TripleTen capstone).",
-   skills:["Python","SQL","PostgreSQL","Power BI"], link:"#"},
-  {title:"Andes Retail Group Dashboard", cat:"Dashboards",
-   problem:"Give a multi-country retailer (Peru, Chile, Colombia) a clear view of revenue and profit, 2024–2025.",
-   did:"Built a two-view Power BI dashboard: KPI overview (revenue, profit, units, average ticket) and a drill-down view explaining the why by country, category and segment, with DAX measures.",
-   result:"Interactive storytelling dashboard, from overview to detail.",
-   skills:["Power BI","DAX","Power Query"], link:"#"},
-  {title:"BI Architecture & Inventory Control (Farmapet AXM)", cat:"Dashboards",
-   problem:"Unify sales and inventory history (1,000+ SKUs) of a business I co-founded to get reliable, fast reporting.",
-   did:"Designed a relational data model from scratch, ran ETL in Power Query, built executive Power BI dashboards, automated the weekly report, and designed an AI-assisted workflow to classify and summarize the product catalog.",
-   result:"Report time cut from 3 hours to under 30 minutes, about 6 operational hours saved per week, and stockouts reduced by 25%.",
-   skills:["Power BI","DAX","Power Query","Data Modeling","Generative AI"], link:"#"},
-  {title:"Schools Profile Report Migration", cat:"Dashboards",
-   problem:"A yearly school-profile report (2021–2026, SNIES data) was built by hand in Excel pivot tables.",
-   did:"Cleaning the source data and rebuilding the report in Power BI with automated year-over-year comparisons and trend indicators.",
-   result:"A reusable, automated report for future analysis.",
-   skills:["Power BI","Power Query","Excel"], link:"#"}
+   skills:["Python","Pandas","Seaborn","Matplotlib"], link:"https://github.com/nataliasepulveda-28/analysis-connectatel"}
+  // Add new projects here as you upload them to GitHub (copy one block above).
 ];
-const cats = ["All","Data Analysis","Dashboards","Big Data"];
+// Filters are built from the categories that actually exist, so there are no empty tabs.
+const cats = ["All", ...new Set(projects.map(p=>p.cat))];
 const skills = ["Python","SQL","Power BI","DAX","Power Query","ETL","A/B Testing","KPIs"];
 
 document.getElementById("skills").innerHTML = skills.map(s=>`<span class="chip">${s}</span>`).join("");
