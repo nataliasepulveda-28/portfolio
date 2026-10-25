@@ -61,22 +61,31 @@ footer{text-align:center;color:var(--muted);padding:40px 0;font-size:.9rem}
 <script>
 // EDIT HERE: add or change projects. category must be one of the filter names below.
 const projects = [
-  {title:"Urban Mobility", cat:"Data Analysis",
-   problem:"Which Latin American cities should prioritize transport infrastructure investment?",
-   did:"Cleaned and merged TomTom Traffic Index and OECD Cities (2024) data with Python and Pandas, then analyzed congestion vs. GDP per capita with boxplots, histograms and bar charts.",
-   result:"Congestion is inversely related to economic development; Bogotá and Lima emerged as investment priorities.",
-   skills:["Python","Pandas","NumPy","Matplotlib","Seaborn"], link:"https://github.com/nataliasepulveda-28/nataliasepulveda-28/tree/main/Urban_mobility"},
-  {title:"Flight Delay Prediction", cat:"Big Data",
-   problem:"Predict whether a flight will arrive late and monitor average delay per airport in real time.",
-   did:"Cleaned a 162,000-flight dataset with PySpark, trained a Decision Tree classifier, and streamed updates with Apache Kafka and Spark Structured Streaming.",
-   result:"End-to-end workflow from batch cleaning to streaming ingestion, reusing the same business logic on HDFS + Kafka + Spark.",
-   skills:["PySpark","Kafka","Spark MLlib","HDFS","JupyterLab"], link:"https://github.com/nataliasepulveda-28/nataliasepulveda-28/tree/main/Flight_delay_prediction"},
-  {title:"ConnectaTel Customer Analysis", cat:"Data Analysis",
-   problem:"Understand customer behavior at a Latin American telecom to support retention strategies and plan improvements.",
-   did:"Fixed data-quality issues (sentinel values, inconsistent dates), computed per-user usage metrics, detected outliers with IQR, and segmented customers by age and usage.",
-   result:"Executive insights translating usage patterns into retention and plan recommendations.",
-   skills:["Python","Pandas","Seaborn","Matplotlib"], link:"https://github.com/nataliasepulveda-28/analysis-connectatel"}
-  // Add new projects here as you upload them to GitHub (copy one block above).
+  {title:"Urban Mobility and Economic Productivity in Latin American Cities", cat:"Data Analysis",
+   problem:"Where would investment in transport infrastructure have the greatest impact in Latin American cities?",
+   did:"Cleaned and merged TomTom Traffic Index and OECD Cities (2024) data with Python and pandas, then compared congestion with GDP per capita using a boxplot, a histogram and a bar chart.",
+   result:"Cities with higher GDP per capita tend to show less congestion; Bogotá emerges as the priority for transport investment, followed by Lima.",
+   skills:["Python","Pandas","Matplotlib","Seaborn"], link:"https://github.com/nataliasepulveda-28/latam-urban-mobility-economy"},
+  {title:"ConnectaTel Customer Behavior Analysis", cat:"Data Analysis",
+   problem:"How do customers of a Latin American telecom actually use their plans, and what should change to improve retention?",
+   did:"Fixed data quality issues (sentinel values, impossible dates, structural nulls), built per-user usage metrics, detected outliers with the IQR method and segmented customers by usage and age.",
+   result:"Premium plans follow age more than consumption, while Basic customers use the most call minutes; four recommendations on plan design and retention.",
+   skills:["Python","Pandas","Seaborn","Matplotlib"], link:"https://github.com/nataliasepulveda-28/analysis-connectatel"},
+  {title:"NovaRetail+ Customer Behavior and Annual Revenue", cat:"Data Analysis",
+   problem:"Which customer behaviors are most strongly associated with the annual revenue they generate?",
+   did:"Explored 15,000 customers with a correlation heatmap and scatterplots, and quantified the relationships with Pearson, Spearman, point-biserial and Cramér’s V.",
+   result:"Purchases show the strongest association with revenue (0.97), visits only a weak one (0.34), so improving visit-to-purchase conversion matters more than adding traffic.",
+   skills:["Python","SciPy","Seaborn","Correlation"], link:"https://github.com/nataliasepulveda-28/novaretail-customer-behavior"},
+  {title:"Landing Page A/B Experiment", cat:"Experimentation",
+   problem:"Which landing page version should become the main page?",
+   did:"Analyzed 40,000 users with a t-test, a two-proportion z-test and chi-square tests of independence on spend, conversion, traffic source and user type.",
+   result:"Page B converts 15.96% vs. 12.57% for page A, and its converted users spend 12.5% more; both differences are statistically significant.",
+   skills:["Python","SciPy","statsmodels","A/B Testing"], link:"https://github.com/nataliasepulveda-28/landing-page-ab-test"},
+  {title:"RappiPlus: From Data to Business Decisions", cat:"Business Analytics",
+   problem:"Is the business profitable, where are users lost, and do they come back?",
+   did:"Cleaned the data in Python, analyzed profitability, built a SQL conversion funnel and cohort retention, ran an A/B test on the checkout and built a two-view Power BI dashboard.",
+   result:"30.4% net margin; the checkout payment steps lose the most users; the new checkout UI shows no statistically significant improvement (p = 0.416).",
+   skills:["Python","SQL","Power BI","A/B Testing"], link:"https://github.com/nataliasepulveda-28/rappiplus-business-analytics"}
 ];
 // Filters are built from the categories that actually exist, so there are no empty tabs.
 const cats = ["All", ...new Set(projects.map(p=>p.cat))];
